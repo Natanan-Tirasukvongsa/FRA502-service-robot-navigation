@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dd_sim">
+    
+    <!--Parameters-->
+    <xacro:property name="base_width" value="0.16"/>
+    <xacro:property name="base_length" value="0.16"/>
+    <xacro:property name="base_height" value="0.03"/>
+    <xacro:property name="wheel_radius" value="0.06"/>
+    <xacro:property name="wheel_length" value="0.015"/>
+    <xacro:property name="wheel_separation" value="0.15"/>
+    <xacro:property name="base_wheel_gap" value="0.007"/>
+    <xacro:property name="wheel_offset" value="0.02"/>
+    <xacro:property name="ball_radius" value="${wheel_radius/2}"/>
+    <xacro:property name="ball_offset" value="-0.052"/>
+    
+    <xacro:property name="link_01_radius" value="0.02"/>
+    <xacro:property name="link_01_length" value="0.2"/>
+    <xacro:property name="link_02_width"  value="0.03"/>
+    <xacro:property name="link_02_length" value="0.2"/>
+    <xacro:property name="link_02_height" value="0.03"/>
+    <xacro:property name="link_03_width"  value="0.03"/>
+    <xacro:property name="link_03_length" value="0.2"/>
+    <xacro:property name="link_03_height" value="0.03"/>
+    <xacro:property name="link_04_radius" value="0.01"/>
+    <xacro:property name="link_04_length" value="0.1"/>
+
+    <xacro:property name="camera_width" value="0.03"/>
+    <xacro:property name="camera_length" value="0.01"/>
+    <xacro:property name="camera_height" value="0.03"/>
+
+    <xacro:property name="gripper_width"  value="0.02"/>
+    <xacro:property name="gripper_length" value="0.01"/>
+    <xacro:property name="gripper_height" value="0.02"/>
+
+    <xacro:property name="hokuyo_width" value="0.03"/>
+    <xacro:property name="hokuyo_length" value="0.03"/>
+    <xacro:property name="hokuyo_height" value="0.03"/>
+
+    <!--Color Properties-->
+    <material name="blue">
+        <color rgba="0 0 0.8 1"/>
+    </material>
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+    <material name="white">
+        <color rgba="1 1 1 1"/>
+    </material>
+    <material name="red">
+        <color rgba="0.8 0.0 0.0 1.0"/>
+    </material>
+    <material name = "orange">
+		<color rgba ="0.8 0.4 0.0 1.0"/>
+	</material>
+    <material name = "green">
+		<color rgba ="0 0.8 0.0 1.0"/>
+	</material>
+    <material name = "purple">
+		<color rgba ="0.8 0 0.4 1.0"/>
+	</material>
+    <material name = "yellow">
+		<color rgba ="1 0.8 0 1.0"/>
+	</material>
+    <material name = "grey">
+		<color rgba ="0.5 0.5 0.5 1.0"/>
+	</material>
+
+    <!--Interial macros-->
+    <xacro:macro name="cylinder_inertia" params="m r h">
+        <inertial>
+        <mass value="${m}"/>
+        <inertia ixx="${m*(3*r*r+h*h)/12}" ixy = "0" ixz = "0" iyy="${m*(3*r*r+h*h)/12}" iyz = "0" izz="${m*r*r/2}"/> 
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="box_inertia" params="m w h d">
+        <inertial>
+        <mass value="${m}"/>
+        <inertia ixx="${m / 12.0 * (d*d + h*h)}" ixy="0.0" ixz="0.0" iyy="${m / 12.0 * (w*w + h*h)}" iyz="0.0" izz="${m / 12.0 * (w*w + d*d)}"/>
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="sphere_inertia" params="m r">
+        <inertial>
+        <mass value="${m}"/>
+        <inertia ixx="${2.0*m*(r*r)/5.0}" ixy="0.0" ixz="0.0" iyy="${2.0*m*(r*r)/5.0}" iyz="0.0" izz="${2.0*m*(r*r)/5.0}"/>
+        </inertial>
+    </xacro:macro>
+
+    <!-- add properties to gazebo-->
+    <gazebo reference = "base_link">
+        <material>Gazebo/Orange</material>
+    </gazebo>
+    <gazebo reference = "left_wheel">
+        <mu1>10</mu1>
+        <mu2>10</mu2>
+        <kp>500000.0</kp>
+        <kd>10.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+        <fdir1>1 0 0</fdir1>
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference = "right_wheel">
+        <mu1>10</mu1>
+        <mu2>10</mu2>
+        <kp>500000.0</kp>
+        <kd>10.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+        <fdir1>1 0 0</fdir1>
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference = "ball_wheel">
+        <mu1>10</mu1>
+        <mu2>10</mu2>
+        <kp>500000.0</kp>
+        <kd>10.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+        <fdir1>1 0 0</fdir1>
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference = "link_01">
+        <material>Gazebo/Red</material>
+    </gazebo>
+    <gazebo reference = "link_02">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference = "link_03">
+        <material>Gazebo/Green</material>
+    </gazebo>
+    <gazebo reference = "link_04">
+        <material>Gazebo/Purple</material>
+    </gazebo>
+    <gazebo reference = "camera_link">
+        <material>Gazebo/Yellow</material>
+    </gazebo>
+    <gazebo reference = "left_gripper">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference = "right_gripper">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference = "front_gripper">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference = "back_gripper">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+    <!--foorprint-->
+    <link name = "footprint">
+        <xacro:box_inertia m="0.1" w="0.001" h="0.001" d = "0.001"/>
+        <visual>
+            <origin xyz = "0 0 0 " rpy = "0 0 0 "/>
+            <geometry>
+                <box size="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+    </link>
+    
+    <!--Base Link-->
+    <link name="base_link">
+        <xacro:box_inertia m="3" w="${base_length}" h="${base_width}" d="${base_height}"/>
+        <visual>
+          <geometry>
+            <box size="${base_length} ${base_width} ${base_height}"/>
+          </geometry>
+          <!--origin rpy="0 0 0" xyz="0 0 ${(base_height/2)+(2*ball_radius)}"/-->
+          <material name="orange"/>
+        </visual>
+        <collision>
+          <geometry>
+            <box size="${base_length} ${base_width} ${base_height}"/>
+          </geometry>
+          <!--origin rpy="0 0 0" xyz="0 0 ${(base_height/2)+(2*ball_radius)}"/-->
+        </collision>
+    </link>
+
+    <!--base link to footprint-->
+    <joint name = "base_link_footprint" type="fixed">
+        <origin xyz = "0 0 ${wheel_radius + wheel_length}" rpy = "0 0 0"/>
+        <parent link = "footprint"/>
+        <child link="base_link"/>
+    </joint>
+
+    <!--Wheel link & joint macro-->
+    <xacro:macro name="wheel" params="prefix reflect">
+        <link name="${prefix}_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertia m="2" r="${wheel_radius}" h="${wheel_length}"/>
+        </link>
+
+        <joint name="${prefix}_wheel_joint" type="continuous">
+            <axis xyz="0 1 0" rpy="0 0 0" />
+            <parent link="base_link"/>
+            <child link="${prefix}_wheel"/>
+            <origin xyz="${wheel_offset} ${(base_width/2+base_wheel_gap)*reflect} -${wheel_length}" rpy="0 0 0"/>
+        </joint>
+    </xacro:macro>
+
+    <!--Create Left & Right Wheel links/joints-->
+    <xacro:wheel prefix="left" reflect="1"/>
+    <xacro:wheel prefix="right" reflect="-1"/>
+
+    <!--ball Wheel Link-->
+    <link name="ball_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="${ball_radius}"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <sphere radius="${ball_radius}"/>
+        </geometry>
+        </collision>
+        <xacro:sphere_inertia m="2" r="${ball_radius}"/>
+    </link>
+
+    <!--Ball Wheel Joint-->
+    <joint name="ball_wheel_joint" type="continuous">
+        <axis xyz="0 1 0" rpy="0 0 0" />
+        <parent link="base_link"/>
+        <child link="ball_wheel"/>
+        <origin xyz="${ball_offset} 0 -${ball_radius+wheel_length}" rpy="0 0 0"/>
+    </joint>
+
+    <!--camera-->
+    <link name = "camera_link">
+        <visual>
+            <origin rpy = "0 0 0 " xyz = " 0 0 0"/>
+            <geometry>
+                <box size="${camera_length} ${camera_width} ${camera_height}"/>
+            </geometry>
+            <material name="yellow"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="${camera_length} ${camera_width} ${camera_height}"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertia m="0.1" w="${camera_length}" h="${camera_width}" d="${camera_height}"/>
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+        <axis xyz="0 1 0"/>
+        <origin rpy = "0 0 ${pi} " xyz = "${-base_width/2-camera_length/2} 0 0"/>
+        <parent link = "base_link"/>
+        <child link = "camera_link"/>
+    </joint>
+
+    <!--hokuyo laser-->
+    <link name = "hokuyo_link">
+        <collision>
+            <origin xyz = "0 0 ${hokuyo_height} " rpy = "0 0 0 "/>>
+            <geometry>
+                <box size = "${hokuyo_width} ${hokuyo_length} ${hokuyo_height} "/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz = "0 0 ${hokuyo_height} " rpy = "0 0 0 "/>>
+            <geometry>
+                <mesh filename="package://dd_sim/meshes/hokuyo.dae"/>
+            </geometry>
+        </visual>
+        <xacro:box_inertia m="0.01" w="${hokuyo_length}" h="${hokuyo_width}" d="${hokuyo_height}"/>
+    </link>
+
+    <joint name = "hokuyo_joint" type="fixed">
+        <axis xyz = "0 1 0"/>
+        <origin rpy = "0 0 ${pi} " xyz = "${-base_width/2+hokuyo_length/2} 0 -${hokuyo_height}"/>
+        <parent link = "base_link"/>
+        <child link = "hokuyo_link"/>
+    </joint>
+
+    
+    <xacro:include filename="$(find dd_sim)/urdf/dd_gazebo_plugins.xacro"/>
+    <xacro:include filename="$(find dd_sim)/urdf/camera.gazebo"/>
+    <xacro:include filename="$(find dd_sim)/urdf/hokuyo.gazebo"/>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/dd</robotNamespace>
+            <!--robotParam>dd/robot_description</robotParam-->
+        </plugin>
+    </gazebo>
+
+</robot>
