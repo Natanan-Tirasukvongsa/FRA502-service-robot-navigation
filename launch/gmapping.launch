@@ -17,6 +17,7 @@
   args="-d $(find dd_sim)/rviz/gmapping.rviz"></node>
 
   <!--Launch slam_gmapping node-->
+  <!-- slam got a problem-->
   <node pkg="gmapping" name="slam_gmapping" type="slam_gmapping" output="screen">
     <param name="delta" value="0.01"/>
     <param name="xmin" value="-20"/>
