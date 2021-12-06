@@ -286,7 +286,7 @@
 
     <joint name = "hokuyo_joint" type="fixed">
         <axis xyz = "0 1 0"/>
-        <origin rpy = "0 0 ${pi} " xyz = "${-base_width/2+hokuyo_length/2} 0 -${hokuyo_height}"/>
+        <origin rpy = "0 0 ${pi} " xyz = "${-base_width/2+hokuyo_length/2} 0 ${hokuyo_height/2}"/>
         <parent link = "base_link"/>
         <child link = "hokuyo_link"/>
     </joint>
