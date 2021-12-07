@@ -1,11 +1,9 @@
 <launch>
-  <arg name="scan_topic"  default="/dd/laser/scan" />
-  <arg name="base_frame"  default="base_link"/>
+  <arg name="scan_topic"  default="/mybot/laser/scan" />
+  <arg name="base_frame"  default="chassis"/>
   <arg name="odom_frame"  default="odom"/>
-  <arg name="map_frame"  default="map"/>
-
   
-  <param name="robot_description" command="$(find xacro)/xacro '$(find dd_sim)/urdf/dd_navi.xacro'"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find dd_sim)/urdf/mybot.xacro"/>
 
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <param name="use_gui" value="False"/>
@@ -19,16 +17,15 @@
   args="-d $(find dd_sim)/rviz/gmapping.rviz"></node>
 
   <!--Launch slam_gmapping node-->
-  <!-- slam got a problem-->
   <node pkg="gmapping" name="slam_gmapping" type="slam_gmapping" output="screen">
     <param name="delta" value="0.01"/>
     <param name="xmin" value="-20"/>
     <param name="xmax" value="20"/>
     <param name="ymin" value="-20"/>
     <param name="ymax" value="20"/>
-    <remap from="scan" to="dd/laser/scan"/>
-    <param name="base_frame" value="base_link" />
-    
+    <remap from="scan" to="mybot/laser/scan"/>
+    <param name="base_frame" value="chassis" />
+
     <param name="linearUpdate" value="0.5"/>
     <param name="angularUpdate" value="0.436"/>
     <param name="temporalUpdate" value="-1.0"/>
