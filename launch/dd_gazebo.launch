@@ -23,8 +23,8 @@
         <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher_gui" output="screen" if="$(arg use_gui)" />
         
         <!--Map Server-->
-        <!--node pkg="map_server" type="map_server" name="map_server" 
-            args="$(find kbot_description)/maps/dd_navi.map.yaml"/-->
+        <node pkg="map_server" type="map_server" name="map_server" 
+            args="$(find dd_sim)/map/dd_navi.map.yaml"/>
         
         <!--RViz-->
         <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dd_sim)/rviz/config.rviz" required="true"/>
