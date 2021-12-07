@@ -14,7 +14,7 @@
   
   <!--Launch rviz-->
   <node pkg="rviz" type="rviz" name="rviz"
-  args="-d $(find dd_sim)/rviz/gmapping.rviz"></node>
+  args="-d $(find dd_sim)/rviz/config.rviz"></node>
 
   <!--Launch slam_gmapping node-->
   <!-- slam got a problem-->
