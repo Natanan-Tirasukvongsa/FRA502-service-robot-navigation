@@ -253,7 +253,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://diff_drive_bot/meshes/hokuyo.dae"/>
+        <mesh filename="package://dd_sim/meshes/hokuyo.dae"/>
       </geometry>
     </visual>
 

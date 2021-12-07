@@ -1,9 +1,10 @@
 <launch>
-  <arg name="scan_topic"  default="/mybot/laser/scan" />
-  <arg name="base_frame"  default="chassis"/>
+  <arg name="scan_topic"  default="/dd/laser/scan" />
+  <arg name="base_frame"  default="footprint"/>
   <arg name="odom_frame"  default="odom"/>
+  <arg name="map_frame"  default="map"/>
   
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find dd_sim)/urdf/mybot.xacro"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find dd_sim)/urdf/dd_navi.xacro"/>
 
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <param name="use_gui" value="False"/>
@@ -13,8 +14,10 @@
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"></node>
   
   <!--Launch rviz-->
+  <!--node pkg="rviz" type="rviz" name="rviz"
+  args="-d $(find dd_sim)/rviz/gmapping.rviz"></node-->
   <node pkg="rviz" type="rviz" name="rviz"
-  args="-d $(find dd_sim)/rviz/gmapping.rviz"></node>
+  args="-d $(find dd_sim)/rviz/config.rviz"></node>
 
   <!--Launch slam_gmapping node-->
   <node pkg="gmapping" name="slam_gmapping" type="slam_gmapping" output="screen">
@@ -23,8 +26,8 @@
     <param name="xmax" value="20"/>
     <param name="ymin" value="-20"/>
     <param name="ymax" value="20"/>
-    <remap from="scan" to="mybot/laser/scan"/>
-    <param name="base_frame" value="chassis" />
+    <remap from="scan" to="dd/laser/scan"/>
+    <param name="base_frame" value="footprint" />
 
     <param name="linearUpdate" value="0.5"/>
     <param name="angularUpdate" value="0.436"/>
