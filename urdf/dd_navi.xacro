@@ -294,7 +294,7 @@
     
     <xacro:include filename="$(find dd_sim)/urdf/dd_gazebo_plugins.xacro"/>
     <xacro:include filename="$(find dd_sim)/urdf/camera.gazebo"/>
-    <xacro:include filename="$(find dd_sim)/urdf/hokuyo.gazebo"/>
+    <xacro:include filename="$(find dd_sim)/urdf/hokuyo.xacro"/>
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
             <robotNamespace>/dd</robotNamespace>
