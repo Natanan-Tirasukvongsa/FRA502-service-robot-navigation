@@ -15,6 +15,14 @@
       <odometryTopic>/dd/base_controller/odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <robotBaseFrame>footprint</robotBaseFrame>
+      <publishWheelTF>false</publishWheelTF>
+      <publishWheelJointState>false</publishWheelJointState>
+      <rosDebugLevel>na</rosDebugLevel>
+      <wheelAcceleration>0</wheelAcceleration>
+      <wheelTorque>5</wheelTorque>
+      <odometrySource>world</odometrySource>
+      <publishTf>1</publishTf>
+      <publishOdomTF>true</publishOdomTF>
     </plugin>
   </gazebo>
  
