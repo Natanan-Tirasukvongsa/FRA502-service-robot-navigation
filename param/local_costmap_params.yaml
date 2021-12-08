@@ -1,6 +1,7 @@
 local_costmap:
-  global_frame: odom
-  robot_base_frame: chassis
+  #global_frame: odom
+  global_frame: map
+  robot_base_frame: footprint
 
   update_frequency: 10.0
   publish_frequency: 10.0
