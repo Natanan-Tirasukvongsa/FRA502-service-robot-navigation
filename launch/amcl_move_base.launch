@@ -26,6 +26,7 @@
     <param name="base_frame_id" value="footprint"/>
     <param name="update_min_d" value="0.5"/>
     <param name="update_min_a" value="1.0"/>
+    <param name="global_frame_id" value = "map"/>
 
     <param name="min_particles"             value="500"/>
     <param name="max_particles"             value="3000"/>
@@ -55,8 +56,8 @@
   </node>
   
   <!-- Arguments -->
-  <arg name="cmd_vel_topic" default="/cmd_vel" />
-  <arg name="odom_topic" default="odom" />
+  <arg name="cmd_vel_topic" default="/dd/base_controller/cmd_vel" />
+  <arg name="odom_topic" default="/dd/base_controller/odom" />
   <arg name="move_forward_only" default="false"/>
 
   <!-- move_base -->
