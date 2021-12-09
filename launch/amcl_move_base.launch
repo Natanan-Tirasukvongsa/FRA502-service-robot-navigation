@@ -16,7 +16,7 @@
 
   <!-- Place map frame at odometry frame -->
   <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
-      args="3.4 -1.5 0.2 0 0 0 map odom 100"/>
+      args="3.34 1.07 0.2 0 0 0 map odom 100"/>
       
   <!-- AMCL -->
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
@@ -53,8 +53,8 @@
     <param name="odom_alpha3"               value="0.1"/>
     <param name="odom_alpha4"               value="0.1"/>
     
-    <param name="initial_pose_x"            value="3.4"/>
-    <param name="initial_pose_y"            value="-1.5"/>
+    <param name="initial_pose_x"            value="3.34"/>
+    <param name="initial_pose_y"            value="1.07"/>
     <param name="initial_pose_z"            value="0.2"/>
   </node>
   

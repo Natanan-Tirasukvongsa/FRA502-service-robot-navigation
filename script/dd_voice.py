@@ -40,8 +40,8 @@ def movebase_client():
 
     elif 'kitchen' in data:
         #call(["espeak","-s140 -ven+18 -z","Going to room2"])
-        goal.target_pose.pose.position.x = 2.95
-        goal.target_pose.pose.position.y = 1.58
+        goal.target_pose.pose.position.x = 3.34
+        goal.target_pose.pose.position.y = 1.07
         goal.target_pose.pose.orientation.w =  1
         client.send_goal(goal)
         place="kitchen"
