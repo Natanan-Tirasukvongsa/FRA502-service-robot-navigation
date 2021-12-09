@@ -41,6 +41,7 @@ class recognizer(object):
         self._device_name_param = "~mic_name"  # Find the name of your microphone by typing pacmd list-sources in the terminal
         self._lm_param = "~lm"
         self._dic_param = "~dict"
+	    self._hmm_param = "~hmm"
 
         # Configure mics with gstreamer launch config
         if rospy.has_param(self._device_name_param):
@@ -63,7 +64,7 @@ class recognizer(object):
         # Configure ROS settings
         self.started = False
         rospy.on_shutdown(self.shutdown)
-        self.pub = rospy.Publisher('~output', String)
+        self.pub = rospy.Publisher('~output', String, queue_size=5)
         rospy.Service("~start", Empty, self.start)
         rospy.Service("~stop", Empty, self.stop)
 
@@ -79,7 +80,8 @@ class recognizer(object):
         self.asr = self.pipeline.get_by_name('asr')
         self.asr.connect('partial_result', self.asr_partial_result)
         self.asr.connect('result', self.asr_result)
-        self.asr.set_property('configured', True)
+        #self.asr.set_property('configured', True)
+
         self.asr.set_property('dsratio', 1)
 
         # Configure language model
@@ -95,8 +97,19 @@ class recognizer(object):
             rospy.logerr('Recognizer not started. Please specify a dictionary.')
             return
 
+        if rospy.has_param(self._hmm_param):
+            hmm = rospy.get_param(self._hmm_param)
+        else:
+            rospy.logerr('what is param hmm?')
+            return
+
         self.asr.set_property('lm', lm)
         self.asr.set_property('dict', dic)
+	    self.asr.set_property('hmm', hmm)
+
+#	self.asr.set_property('lm', '/usr/share/pocketsphinx/model/lm/en/tidigits.DMP')
+#	self.asr.set_property('dict', '/usr/share/pocketsphinx/model/lm/en/tidigits.dic')
+#	self.asr.set_property('hmm', '/usr/share/pocketsphinx/model/hmm/en/tidigits')
 
         self.bus = self.pipeline.get_bus()
         self.bus.add_signal_watch()
