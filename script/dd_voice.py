@@ -1,8 +1,12 @@
+#!/usr/bin/env python3
+# license removed for brevity
+
 import rospy
 import actionlib
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 import speech_recognition as sr
 from subprocess import call
+
 
 r = sr.Recognizer()
 
@@ -13,7 +17,7 @@ def movebase_client():
     client.wait_for_server()
 
     with sr.Microphone() as source:
-        call(["espeak","-s140 -ven+18 -z","Where Should I go ?"])
+        #call(["espeak","-s140 -ven+18 -z","Where Should I go ?"])
         print("Where Should I go ?")
         r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
@@ -26,37 +30,37 @@ def movebase_client():
     goal.target_pose.header.frame_id = "map"
     goal.target_pose.header.stamp = rospy.Time.now()
 
-    if 'room1' in data:
-        call(["espeak","-s140 -ven+18 -z","Going to room1"])
+    if 'room 1' in data:
+        #call(["espeak","-s140 -ven+18 -z","Going to room1"])
         goal.target_pose.pose.position.x = 3.4
         goal.target_pose.pose.position.y = -1.5
-        goal.target_pose.pose.orientation.w =  0
+        goal.target_pose.pose.orientation.w =  1
         client.send_goal(goal) 
-        place="room1"       
+        place="room 1"       
 
-    elif 'room2' in data:
-        call(["espeak","-s140 -ven+18 -z","Going to room2"])
+    elif 'room 2' in data:
+        #call(["espeak","-s140 -ven+18 -z","Going to room2"])
         goal.target_pose.pose.position.x = 2.95
         goal.target_pose.pose.position.y = 1.58
-        goal.target_pose.pose.orientation.w =  0
+        goal.target_pose.pose.orientation.w =  1
         client.send_goal(goal)
-        place="room2"
+        place="room 2"
 
-    elif 'room3' in data:
-        call(["espeak","-s140 -ven+18 -z","Going to room3"])
+    elif 'room 3' in data:
+        #call(["espeak","-s140 -ven+18 -z","Going to room3"])
         goal.target_pose.pose.position.x = -0.05
         goal.target_pose.pose.position.y = 2.04
-        goal.target_pose.pose.orientation.w =  0
+        goal.target_pose.pose.orientation.w =  1
         client.send_goal(goal)
-        place="room3"
+        place="room 3"
 
-    elif 'room4' in data:
-        call(["espeak","-s140 -ven+18 -z","Going to room4"])
+    elif 'room 4' in data:
+        #call(["espeak","-s140 -ven+18 -z","Going to room4"])
         goal.target_pose.pose.position.x = -2.22
         goal.target_pose.pose.position.y = 1.18
-        goal.target_pose.pose.orientation.w = 0
+        goal.target_pose.pose.orientation.w = 1
         client.send_goal(goal)
-        place="room4"
+        place="room 4"
 
     else:
         print("No Goal")
