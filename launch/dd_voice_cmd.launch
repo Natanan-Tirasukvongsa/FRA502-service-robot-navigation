@@ -1,0 +1,11 @@
+<launch>
+
+  <node name="recognizer" pkg="dd_sim" type="recognizer.py">
+    <param name="lm" value="$(find dd_sim)/demo/voice_cmd.lm"/>
+    <param name="dict" value="$(find dd_sim)/demo/voice_cmd.dic"/>
+  </node>
+
+  <node name="voice_cmd_vel" pkg="dd_sim" type="voice_cmd_vel.py" output="screen" launch-prefix="xterm -e">
+    <remap from="cmd_vel" to="/dd/commands/velocity"/>
+  </node>`
+</launch>
