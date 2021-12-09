@@ -30,37 +30,37 @@ def movebase_client():
     goal.target_pose.header.frame_id = "map"
     goal.target_pose.header.stamp = rospy.Time.now()
 
-    if 'room 1' in data:
+    if 'living room' in data:
         #call(["espeak","-s140 -ven+18 -z","Going to room1"])
         goal.target_pose.pose.position.x = 3.4
         goal.target_pose.pose.position.y = -1.5
         goal.target_pose.pose.orientation.w =  1
         client.send_goal(goal) 
-        place="room 1"       
+        place="living room"       
 
-    elif 'room 2' in data:
+    elif 'kitchen' in data:
         #call(["espeak","-s140 -ven+18 -z","Going to room2"])
         goal.target_pose.pose.position.x = 2.95
         goal.target_pose.pose.position.y = 1.58
         goal.target_pose.pose.orientation.w =  1
         client.send_goal(goal)
-        place="room 2"
+        place="kitchen"
 
-    elif 'room 3' in data:
+    elif 'toilet' in data:
         #call(["espeak","-s140 -ven+18 -z","Going to room3"])
         goal.target_pose.pose.position.x = -0.05
         goal.target_pose.pose.position.y = 2.04
         goal.target_pose.pose.orientation.w =  1
         client.send_goal(goal)
-        place="room 3"
+        place="toilet"
 
-    elif 'room 4' in data:
+    elif 'bedroom' in data:
         #call(["espeak","-s140 -ven+18 -z","Going to room4"])
         goal.target_pose.pose.position.x = -2.22
         goal.target_pose.pose.position.y = 1.18
         goal.target_pose.pose.orientation.w = 1
         client.send_goal(goal)
-        place="room 4"
+        place="bedroom"
 
     else:
         print("No Goal")
