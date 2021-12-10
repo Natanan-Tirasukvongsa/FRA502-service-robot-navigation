@@ -14,6 +14,7 @@ I will apply your lessons in the future and develop myself to be better all the 
 1. urdf,rviz,gazebo and teleop_twist_key : [links](https://kiranpalla.com/autonomous-navigation-ros-differential-drive-robot-simulation/describing-ros-robot-with-urdf/)
 2. gmapping and navigation : [links](https://github.com/devanshdhrafani/diff_drive_bot?fbclid=IwAR2t3EY3aUO5wAb3eOJGuSDGXqBoWrExbm618RtJ0-9Htg4wOJ05qkK33cg)
 3. speech navigation : [links](https://github.com/Avi241/ancro_description)
+4. robot manipulator : [links](https://www.youtube.com/watch?v=Ale55LcdZeE&list=PLK0b4e05LnzYpDnNeWJcQLju7JfJFX-lk&index=1)
 
 ## video demonstration: 
 1. final video : [links](https://drive.google.com/drive/folders/1J6MmJnSN6SAPsfUbSrsweeX5UOToTUsP)
@@ -24,6 +25,15 @@ I will apply your lessons in the future and develop myself to be better all the 
 2. final video is speech navigation
 3. previous video is pick and place (before edit proposal)
 4. this is github of previous video :[links]( https://github.com/Natanan-Tirasukvongsa/FRA502-Service-Robot)
+
+## What did I use
+1. ubuntu 20.04 lts (noetic)
+2. virtual box
+3. visual studio
+4. differential drive (2 back wheels)
+5. ball wheel (support wheel)
+6. hokuyo lidar (laserscan)
+7. camera
 
 ## All files used in this project
 
@@ -165,6 +175,12 @@ speech_recognition.UnknowValueError
 *note*
 1. there are 4 rooms such as living room, kitchen, toilet and bedroom
 2. you must pronouce clearly
+3. if cannot run this file, you can run thisfile in visual studio (or other IDE). another way in third terminal, try : 
+~~~
+$ roscd dd_sim/script/
+$ chmod +x dd_voice.py
+$ rosrun dd_sim dd_voice.py
+~~~
 
 ## problems
 ### virtual box
@@ -177,10 +193,16 @@ speech_recognition.UnknowValueError
 ### gazebo
 1. ตอนสร้าง บ้านใน gazebo ไม่สามารถลาก หน้าต่างหรือประตู ข้ามกำแพงที่ซ้อนกันได้ ต้องสร้างกำแพงเสร็จแล้วใส่ หน้าต่างหรือประตูเข้าไปทันที ไม่งั้น โปรแกรม gazebo จะปิดตัวเอง **__(แก้ไขแล้ว)__**
 2. ในบางครั้ง gazebo ปิดตัวมันเองโดยไม่ทราบสาเหตุ **__(ไม่ทราบแนวทางแก้ไข)__**
+3. เมื่อ launch gazebo ในส่วนของ node robot_state_publisher ไม่สามารถใช้ type = state_publisher แต่แก้ไขเป็น type = robot_state_publisher **__(แก้ไขแล้ว)__**
+~~~
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+~~~
 
 ### speech
-1. ไม่สามารถโหลด pystudio ได้ **__(แก้ไขไม่ได้)__**
+1. ไม่สามารถโหลด pystudio และ pip3 install SpeechRecognition ได้ **__(แก้ไขไม่ได้)__**
 2. มีปัญหาในการออกเสียงตัวเลข เช่น input room 3 แต่ output ออกมาเป็น room three แก้ไขโดยการเปลี่ยนเป็นคำอื่นแทน **__(แก้ไขแล้ว)__**
+3. ถ้าหาก run ไฟล์ dd_voice.py ใน terminal จะติดปัญหาไม่สามารถรันได้ แต่แก้ไขโดยการทำเหมือนขั้นตอนของ note ในหัวข้อ command หรือ run ใน visualstudio โดยตรง **__(แก้ไขแล้ว)__**
+4. ไม่สามารถตั้งชื่อห้องเป็น room1 ได้ แต่สามารถแก้ไขเป็น room 1ได้ **__(แก้ไขแล้ว)__**
 
 ### navigation
 1. ไฟล์ global_costmap_params.yaml ในส่วนของ global_frame ไม่สามารถใช้ /map ได้ โดยแก้ปัญหาโดยการใช้ map แทน **__(แก้ไขแล้ว)__**
@@ -189,3 +211,24 @@ speech_recognition.UnknowValueError
 
 ### urdf 
 1. ในช่วงแรกมีการใส่ค่า parameter ที่ไม่เหมาะสม เช่น ใส่มวลบางส่วนมากหรือน้อยเกินไป, ไม่ได้ใส่ค่าแรงเสียดทาน ดังนั้นจึงมีการเปลี่ยนแปลงค่า parameter ให้เหมาะสมมากขึ้น **__(แก้ไขแล้ว)__**
+
+### package
+1. ถ้าหากสร้าง package ขึ้นมาแล้วไม่มี package นั้นแต่แรก สามารถใส่ package นั้นเข้าไปยัง package.xml และ CMackList.txt **__(แก้ไขแล้ว)__**
+
+### arm control
+1. ถ้าหากใส่ค่า pid ของแต่ละข้อต่อหุ่นยนต์มากเกินไปจะทำให้หุ่นยนต์ทั้งหมดสั่น ดังนั้นจึงเริ่มต้นจากการใส่ค่าน้อย ๆ ก่อน **__(แก้ไขแล้ว)__**
+2. ในการบังคับแขนหุ่นยนต์ไปในองศาต่าง ๆ ในบางครั้งไม่ขึ้น topic ดังนั้นจึงแก้ไขตามลิงก์นี้ [links](http://wiki.ros.org/ros_control/Tutorials/Loading%20and%20starting%20controllers%20through%20service%20calls) **__(แก้ไขแล้ว)__**
+~~~
+$ rosservice call /dd/controller_manager/load_controller "name: 'joint1_position_controller'"
+$ rosservice call /dd/controller_manager/load_controller "name: 'joint1_position_controller'"
+~~~
+4. ตอนที่เพิ่ม package ของ controller_manager, joint_state_controller, robot_state_publisher ไม่สามารถใช้ <build_depend/> และ <run_depend/> แต่ใช้ลักษณะแบบนี้แทน **__(แก้ไขแล้ว)__**
+~~~
+<build_export_depend>controller_manager</build_export_depend>
+<build_export_depend>joint_state_controller</build_export_depend>
+<build_export_depend>robot_state_publisher</build_export_depend>
+
+<exec_depend>controller_manager</exec_depend>
+<exec_depend>joint_state_controller</exec_depend>
+<exec_depend>robot_state_publisher</exec_depend>
+~~~
