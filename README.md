@@ -1,5 +1,4 @@
 # FRA502-service-robot : Phase III: Final presentation
-This robot is moving base (by differential drive) 
 
 ## Info:
 
@@ -7,6 +6,9 @@ Name : Natanan Tirasukvongsa
 
 Student ID : 62340500020
 
+## Dear professor
+Dear Professor Thavida Maneewarn, Thank you so much for helping me and teaching me.
+I will apply your lessons in the future and develop myself to be better all the time.
 
 ## credits:
 1. urdf,rviz,gazebo and teleop_twist_key : [links](https://kiranpalla.com/autonomous-navigation-ros-differential-drive-robot-simulation/describing-ros-robot-with-urdf/)
