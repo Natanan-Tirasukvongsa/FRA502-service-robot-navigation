@@ -3,12 +3,12 @@ This robot is moving base (by differential drive)
 Name : Natanan Tirasukvongsa
 Student ID : 62340500020
 
-credits:
+**credits:
 1. https://kiranpalla.com/autonomous-navigation-ros-differential-drive-robot-simulation/describing-ros-robot-with-urdf/
 2. https://github.com/devanshdhrafani/diff_drive_bot?fbclid=IwAR2t3EY3aUO5wAb3eOJGuSDGXqBoWrExbm618RtJ0-9Htg4wOJ05qkK33cg
 3. https://github.com/Avi241/ancro_description
 
-video demonstration: https://drive.google.com/drive/folders/1J6MmJnSN6SAPsfUbSrsweeX5UOToTUsP
+**video demonstration:** https://drive.google.com/drive/folders/1J6MmJnSN6SAPsfUbSrsweeX5UOToTUsP
 *note*
 1. video sound is very low  
 
