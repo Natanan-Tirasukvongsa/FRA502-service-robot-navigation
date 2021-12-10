@@ -124,7 +124,8 @@ $ roslaunch dd_sim dd_gazebo.launch
 $ roslaunch dd_sim amcl_move_base.launch
 ~~~
 *note*
-1. you can use __2D Nav Goal__ to set goal
+1. you can use __2D Pose Estimate__ to set initial
+2. you can use __2D Nav Goal__ to set goal
 
 ### voice command
 **Step 1**, open first terminal to launch gazebo
