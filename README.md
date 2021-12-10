@@ -175,7 +175,7 @@ speech_recognition.UnknowValueError
 *note*
 1. there are 4 rooms such as living room, kitchen, toilet and bedroom
 2. you must pronouce clearly
-3. if cannot run this file, you can run thisfile in visual studio (or other IDE). another way in third terminal, try : 
+3. if cannot run this file, you can run this file in visual studio (or other IDE). another way in third terminal, try : 
 ~~~
 $ roscd dd_sim/script/
 $ chmod +x dd_voice.py
