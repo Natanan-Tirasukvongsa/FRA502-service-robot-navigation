@@ -1,5 +1,7 @@
 # FRA502-service-robot : Phase III: Final presentation
 This robot is moving base (by differential drive) 
+
+**Info:**
 Name : Natanan Tirasukvongsa
 Student ID : 62340500020
 
