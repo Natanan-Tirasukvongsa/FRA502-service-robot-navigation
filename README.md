@@ -48,7 +48,7 @@ save created map | dd_sim | map | test2_map.pgm , test2_map.yaml
 show navigation rviz | dd_sim | rviz | navigation.rviz
 launch navigation | dd_sim | launch | amcl_move_base.launch
 all parameter for navigation | dd_sim | param | costmap_common_params.yaml, dwa_local_planner_params, global_costmap_params.yaml, local_costmap_params.yaml, move_base_params.yaml
-voice commanf program | dd_sim | script | dd_voice.py
+voice command program | dd_sim | script | dd_voice.py
 
 ## run robot 
 ### launch rviz ,gazebo and open camera
