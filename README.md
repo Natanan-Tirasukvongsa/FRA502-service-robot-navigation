@@ -9,22 +9,30 @@ show default rviz | dd_sim | launch | config.rviz
 launch robot on RVIZ | dd_sim | launch | dd_rviz.launch
 launch robot on Gazebo & RVIZ | dd_sim | launch | dd_gazebo.launch
 show hokuyo lidar | dd_sim | meshes | hokuyo.dae
-show all model in gazebo world | dd_sim | models | box_blue, box_green, box_orgage, box_red, cylinder_blue, cylinder_red
+show all obstacle in gazebo world | dd_sim | models | box_blue, box_green, box_orgage, box_red, cylinder_blue, cylinder_red
+spawn world | dd_sim | world | dd_navi.world
 show robot xacro model | dd_sim | urdf | dd_navi.xacro
 camera plugin | dd_sim | urdf | camera.gazebo
 lidar plugin | dd_sim | urdf | hokuyo.gazebo
 differenial drive plugin | dd_sim | urdf | dd_gazebo_plugins.xacro
-spawn world | dd_sim | world | dd_navi.world
 CMakeLists | dd_sim |  - | CMakeLists.txt
 package | dd_sim| - | package.xml
 launch control robot movement | dd_sim | launch| dd_control_teleop.launch
+show gmapping rviz | dd_sim | rviz | gmapping.rviz
+launch gmapping | dd_sim | launch | gmapping.launch
+save created map | dd_sim | map | test2_map.pgm , test2_map.yaml
+show navigation rviz | dd_sim | rviz | navigation.rviz
+launch navigation | dd_sim | launch | amcl_move_base.launch
+all parameter for navigation | dd_sim | param | costmap_common_params.yaml, dwa_local_planner_params, global_costmap_params.yaml, local_costmap_params.yaml, move_base_params.yaml
+voice commanf program | dd_sim | script | dd_voice.py
+
 
 ## Simulation Phase I
 **Step 1**, open first terminal and launch RVIZ by following this 
 ~~~~~~
 $ roslaunch dd_sim dd_rviz.launch
 ~~~~~~
-or launch RVIZ & Gazebo together
+launch Gazebo 
 ~~~
 $ roslaunch dd_sim dd_gazebo.launch
 ~~~
