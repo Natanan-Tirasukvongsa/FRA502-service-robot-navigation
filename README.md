@@ -34,6 +34,7 @@ I will apply your lessons in the future and develop myself to be better all the 
 5. ball wheel (support wheel)
 6. hokuyo lidar (laserscan)
 7. camera
+8. package name : dd_sim
 
 ## All files used in this project
 
@@ -173,9 +174,14 @@ if it cannot listen clearly, output will be like this
 speech_recognition.UnknowValueError
 ~~~
 *note*
-1. there are 4 rooms such as living room, kitchen, toilet and bedroom
-2. you must pronouce clearly
-3. if cannot run this file, you can run this file in visual studio (or other IDE). another way in third terminal, try : 
+1. do not delete this line , __Must Have !!__
+~~~
+#!/usr/bin/env python3
+# license removed for brevity
+~~~
+2. there are 4 rooms such as living room, kitchen, toilet and bedroom
+3. you must pronouce clearly
+4. if cannot run this file, you can run this file in visual studio (or other IDE). another way in third terminal, try : 
 ~~~
 $ roscd dd_sim/script/
 $ chmod +x dd_voice.py
@@ -203,6 +209,7 @@ $ rosrun dd_sim dd_voice.py
 2. มีปัญหาในการออกเสียงตัวเลข เช่น input room 3 แต่ output ออกมาเป็น room three แก้ไขโดยการเปลี่ยนเป็นคำอื่นแทน **__(แก้ไขแล้ว)__**
 3. ถ้าหาก run ไฟล์ dd_voice.py ใน terminal จะติดปัญหาไม่สามารถรันได้ แต่แก้ไขโดยการทำเหมือนขั้นตอนของ note ในหัวข้อ command หรือ run ใน visualstudio โดยตรง **__(แก้ไขแล้ว)__**
 4. ไม่สามารถตั้งชื่อห้องเป็น room1 ได้ แต่สามารถแก้ไขเป็น room 1ได้ **__(แก้ไขแล้ว)__**
+5. ในตอนที่ศึกษา speech navigation ครั้งแรกเผลอไปลบบรรทัด #!/usr/bin/env python3 และ # license removed for brevity ทำให้ไม่สามารถ run โปรแกรมได้ ตอนนี้ได้เพิ่มเข้ามาเรียบร้อยแล้ว **__(แก้ไขแล้ว)__**
 
 ### navigation
 1. ไฟล์ global_costmap_params.yaml ในส่วนของ global_frame ไม่สามารถใช้ /map ได้ โดยแก้ปัญหาโดยการใช้ map แทน **__(แก้ไขแล้ว)__**
