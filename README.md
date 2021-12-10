@@ -24,7 +24,7 @@ I will apply your lessons in the future and develop myself to be better all the 
 1. video sound is very low , so I add voice record in side google drive
 2. final video is speech navigation
 3. previous video is pick and place (before edit proposal)
-4. this is github of previous video :[links]( https://github.com/Natanan-Tirasukvongsa/FRA502-Service-Robot)
+4. this is github of previous video : [links]( https://github.com/Natanan-Tirasukvongsa/FRA502-Service-Robot)
 
 ## What did I use
 1. ubuntu 20.04 lts (noetic)
