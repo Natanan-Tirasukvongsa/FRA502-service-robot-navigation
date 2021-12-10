@@ -205,7 +205,7 @@ $ rosrun dd_sim dd_voice.py
 ~~~
 
 ### speech
-1. ไม่สามารถโหลด pystudio และ pip3 install SpeechRecognition ได้ **__(แก้ไขไม่ได้)__**
+1. ไม่สามารถโหลด pystudio, libportaudio0 และ pip3 install SpeechRecognition ได้ **__(แก้ไขไม่ได้)__**
 2. มีปัญหาในการออกเสียงตัวเลข เช่น input room 3 แต่ output ออกมาเป็น room three แก้ไขโดยการเปลี่ยนเป็นคำอื่นแทน **__(แก้ไขแล้ว)__**
 3. ถ้าหาก run ไฟล์ dd_voice.py ใน terminal จะติดปัญหาไม่สามารถรันได้ แต่แก้ไขโดยการทำเหมือนขั้นตอนของ note ในหัวข้อ command หรือ run ใน visualstudio โดยตรง **__(แก้ไขแล้ว)__**
 4. ไม่สามารถตั้งชื่อห้องเป็น room1 ได้ แต่สามารถแก้ไขเป็น room 1ได้ **__(แก้ไขแล้ว)__**
