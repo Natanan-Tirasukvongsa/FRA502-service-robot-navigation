@@ -163,7 +163,7 @@ if it cannot listen clearly, output will be like this
 speech_recognition.UnknowValueError
 ~~~
 *note*
-1. there are 4 room such as living room, kitchen, toilet and bedroom
+1. there are 4 rooms such as living room, kitchen, toilet and bedroom
 2. you must pronouce clearly
 
 ## problems
