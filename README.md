@@ -127,6 +127,13 @@ $ roslaunch dd_sim amcl_move_base.launch
 1. you can use __2D Pose Estimate__ to set initial
 2. you can use __2D Nav Goal__ to set goal
 
+**Step 3**, open third terminal to see position and orientation (x, y, z, w)
+~~~
+$ rostopic echo /move_base_simple/goal
+~~~
+*note*
+1. you can note robot pose for using in voice command 
+
 ### voice command
 **Step 1**, open first terminal to launch gazebo
 ~~~
