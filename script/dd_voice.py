@@ -80,7 +80,7 @@ if __name__ == '__main__':
             if result:
                 rospy.loginfo("Goal execution done!")
                 text="Reached to" + pl
-                call(["espeak","-s140 -ven+18 -z",text])
+                #call(["espeak","-s140 -ven+18 -z",text])
 
 
     except rospy.ROSInterruptException:
