@@ -153,6 +153,7 @@ if it works, output will be like this
 ~~~
 Where Should I go ?
 ~~~
+after that say the room name (living room, kitchen, toilet or bedroom)
 if it can listen clearly, output will be like this
 ~~~
 Sphinx thinks you said living room
@@ -184,6 +185,7 @@ speech_recognition.UnknowValueError
 ### navigation
 1. ไฟล์ global_costmap_params.yaml ในส่วนของ global_frame ไม่สามารถใช้ /map ได้ โดยแก้ปัญหาโดยการใช้ map แทน **__(แก้ไขแล้ว)__**
 2. หุ่นยนต์ที่แสดงบน navigaion.rviz มีการวาปไปมา และในการทดสอบบางครั้งมีการชนกำแพงหรือสิ่งกีดขวาง (ยังแก้ปัญหานี้ไม่ได้) **__(แก้ไขไม่ได้)__**
+3. ในส่วนการทำ navigation ช่วงแรกมีการติดตั้ง laser scan ที่ต่ำไปและสามารถตรวจจับได้เพียง 180 องศา ทำให้เมื่อหุ่นยนต์ถอยหลังมีการชนสิ่งกีดขวาง จึงแก้ไขปรับให้ตำแหน่งสูงขึ้นและเปลี่ยนมุมองศาเป็น 360 องศา **__(แก้ไขแล้ว)__**
 
 ### urdf 
 1. ในช่วงแรกมีการใส่ค่า parameter ที่ไม่เหมาะสม เช่น ใส่มวลบางส่วนมากหรือน้อยเกินไป, ไม่ได้ใส่ค่าแรงเสียดทาน ดังนั้นจึงมีการเปลี่ยนแปลงค่า parameter ให้เหมาะสมมากขึ้น **__(แก้ไขแล้ว)__**
