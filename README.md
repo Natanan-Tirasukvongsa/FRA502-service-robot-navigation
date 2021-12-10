@@ -18,6 +18,7 @@ I will apply your lessons in the future and develop myself to be better all the 
 ## video demonstration: 
 1. final video : [links](https://drive.google.com/drive/folders/1J6MmJnSN6SAPsfUbSrsweeX5UOToTUsP)
 2. previous video : [links](https://drive.google.com/drive/folders/1LmPplB1sx3LDUO-EncINvqemZJnvC7kX)
+
 *note*
 1. video sound is very low , so I add voice record in side google drive
 2. final video is speech navigation
